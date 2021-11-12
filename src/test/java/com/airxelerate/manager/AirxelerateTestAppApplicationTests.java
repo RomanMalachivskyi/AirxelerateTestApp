@@ -1,4 +1,4 @@
-package com.airxelerate.AirxelerateTestApp;
+package com.airxelerate.manager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
