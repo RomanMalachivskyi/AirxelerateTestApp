@@ -5,6 +5,7 @@ import com.airxelerate.manager.exception.FlightException;
 import com.airxelerate.manager.exception.FlightNotFoundException;
 import com.airxelerate.manager.repository.FlightRepo;
 import com.airxelerate.manager.service.FlightService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @Slf4j
 @Service
+@AllArgsConstructor
 public class FlightServiceImpl implements FlightService {
     @Autowired
     private FlightRepo flightRepo;
