@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/flight")
 public class FlightController {
@@ -14,11 +16,11 @@ public class FlightController {
     @Autowired
     FlightService flightService;
 
-    @RequestMapping(value = "/{mountainId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{flightId}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public Flight getById(final @PathVariable int mountainId) {
-        return flightService.getById(mountainId);
+    public Flight getById(final @PathVariable int flightId) {
+        return flightService.getById(flightId);
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -28,19 +30,25 @@ public class FlightController {
         return flightService.getAll();
     }
 
+    @RequestMapping(method = RequestMethod.GET, params = {"originAirportCode"})
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Iterable<Flight> getAllByOriginAirportCode(@RequestParam String originAirportCode) {
+        return flightService.getAllByOriginAirportCode(originAirportCode);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public Flight addNewFlight(@RequestBody final Flight flight) {
+    public Flight addNewFlight(@RequestBody @Valid final Flight flight) {
         return flightService.add(flight);
     }
 
     @RequestMapping(value = "/{flightId}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public Flight modify(@RequestBody final Flight mountain, final @PathVariable int flightId) {
-        mountain.setId(flightId);
-        return flightService.update(mountain);
+    public Flight modify(@RequestBody @Valid final Flight flight, final @PathVariable int flightId) {
+        return flightService.update(flight);
     }
 
     @RequestMapping(value = "/{flightId}", method = RequestMethod.DELETE)

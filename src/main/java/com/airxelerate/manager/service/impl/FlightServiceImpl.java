@@ -5,11 +5,13 @@ import com.airxelerate.manager.exception.FlightException;
 import com.airxelerate.manager.exception.FlightNotFoundException;
 import com.airxelerate.manager.repository.FlightRepo;
 import com.airxelerate.manager.service.FlightService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class FlightServiceImpl implements FlightService {
     @Autowired
@@ -22,6 +24,7 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Flight deleteById(Integer id) {
+        log.info("delete flight with id: " + id);
         Optional<Flight> categoryToDelete = flightRepo.findById(id);
         if (categoryToDelete.isPresent()){
             flightRepo.deleteById(id);
@@ -33,18 +36,24 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Iterable<Flight> getAll() {
-        Iterable<Flight> result = flightRepo.findAll();
+        log.info("get all flights");
         return flightRepo.findAll();
     }
 
     @Override
     public Flight update(Flight flight) {
-        //@TODO
-        return null;
+       throw new UnsupportedOperationException("not implemented");
     }
 
     @Override
     public Flight getById(int flightId) {
-        return flightRepo.findById(flightId).orElseThrow(FlightNotFoundException::new);
+        log.info("get flight by id: " + flightId);
+        return flightRepo.findById(flightId).orElseThrow(() -> new FlightNotFoundException(flightId));
+    }
+
+    @Override
+    public Iterable<Flight> getAllByOriginAirportCode(String originAirportCode) {
+        log.info("get flights by originAirportCode: " + originAirportCode);
+        return flightRepo.findByOriginAirportCode(originAirportCode);
     }
 }

@@ -1,59 +1,41 @@
 package com.airxelerate.manager.entity;
 
+import com.airxelerate.manager.service.validation.FlightNumberValidation;
+import lombok.*;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Entity
-public class Flight implements Resource {
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @NotNull
     @Column
-    private String fromCountry;
+    @Size(max = 3, message = "invalid iataCarrierCode, should be less than 3 letters")
+    private String iataCarrierCode;
+    @NotNull
     @Column
-    private String toCountry;
+    @Size(max = 3, message = "invalid originAirportCode, should be less than 3 letters")
+    private String originAirportCode;
+    @NotNull
     @Column
+    @Size(max = 3, message = "invalid destinationAirportCode, should be less than 3 letters")
+    private String destinationAirportCode;
+    @NotNull
+    @Column
+    private Date departureDate;
+    @Column
+    @NotNull
+    @FlightNumberValidation(message = "Invalid number. Should contain 4 digits. 0 is possible at start")
     private String number;
 
-//    public Flight() {
-//    }
-//
-//    public Flight(String fromCountry, String toCountry, String number) {
-//        this.fromCountry = fromCountry;
-//        this.toCountry = toCountry;
-//        this.number = number;
-//    }
-
-    @Override
-    public Integer getId() {
-        return this.id;
-    }
-
-    @Override
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getFromCountry() {
-        return this.fromCountry;
-    }
-
-    public void setFromCountry(String fromCountry) {
-        this.fromCountry = fromCountry;
-    }
-
-    public String getToCountry() {
-        return toCountry;
-    }
-
-    public void setToCountry(String toCountry) {
-        this.toCountry = toCountry;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
 }

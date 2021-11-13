@@ -13,4 +13,7 @@ public interface FlightService {
     Flight update(Flight flight);
 
     Flight getById(int mountainId);
+
+    Iterable<Flight> getAllByOriginAirportCode(String originAirportCode);
+
 }
