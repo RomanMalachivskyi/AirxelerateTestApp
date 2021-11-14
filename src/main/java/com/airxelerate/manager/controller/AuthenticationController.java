@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.airxelerate.manager.entity.TokenResult;
 import com.airxelerate.manager.security.JwtTokenHelper;
 import com.airxelerate.manager.security.WebSecurityConfig;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,6 +28,7 @@ public class AuthenticationController {
     @Autowired
     private JwtTokenHelper jwtTokenHelper;
     @Autowired
+    @Qualifier("userDetailsServiceImpl")
     private UserDetailsService userDetailsService;
     @Autowired
     private PasswordEncoder passwordEncoder;

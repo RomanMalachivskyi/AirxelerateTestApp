@@ -7,6 +7,6 @@ public class FlightNotFoundException extends RuntimeException {
     }
 
     public FlightNotFoundException(String fieldName, String value) {
-        super("flight with" + fieldName + ": " + "value " + "was not found");
+        super("flight with" + fieldName + ": " + "value " + value + "was not found");
     }
 }

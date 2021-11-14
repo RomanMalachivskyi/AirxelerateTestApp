@@ -4,7 +4,7 @@ import com.airxelerate.manager.entity.Flight;
 
 public interface FlightService {
 
-    Flight add(Flight category);
+    Flight add(Flight flight);
 
     Flight deleteById(Integer id);
 

@@ -20,8 +20,9 @@ public class FlightServiceImpl implements FlightService {
     private FlightRepo flightRepo;
 
     @Override
-    public Flight add(Flight category) {
-        return flightRepo.save(category);
+    public Flight add(Flight flight) {
+        log.info("add new flight: " + flight);
+        return flightRepo.save(flight);
     }
 
     @Override
