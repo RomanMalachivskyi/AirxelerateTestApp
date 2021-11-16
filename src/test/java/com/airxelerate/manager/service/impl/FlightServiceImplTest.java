@@ -7,15 +7,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class FlightServiceImplTest {
@@ -31,7 +30,7 @@ class FlightServiceImplTest {
         int id = 1;
 
         when(flightRepo.findById(id)).thenReturn(Optional.empty());
-        assertThrows( FlightNotFoundException.class,  () -> flightService.getById(1));
+        assertThrows(FlightNotFoundException.class, () -> flightService.getById(1));
 
         verify(flightRepo).findById(id);
     }

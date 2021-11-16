@@ -1,12 +1,9 @@
 package com.airxelerate.manager.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import com.airxelerate.manager.entity.TokenResult;
 import com.airxelerate.manager.security.JwtTokenHelper;
 import com.airxelerate.manager.security.WebSecurityConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,12 +12,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 public class AuthenticationController {
@@ -33,9 +33,9 @@ public class AuthenticationController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping(path = "authenticate", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
+    @PostMapping(path = "authenticate", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     @ResponseBody
-    public TokenResult login( @RequestParam String username, @RequestParam String password) {
+    public TokenResult login(@RequestParam String username, @RequestParam String password) {
 
         UserDetails userDetails;
         try {
@@ -52,7 +52,6 @@ public class AuthenticationController {
                     .map(GrantedAuthority::getAuthority)
                     .collect(Collectors.joining(","));
             claims.put(WebSecurityConfig.AUTHORITIES_CLAIM_NAME, authorities);
-            claims.put("userId", String.valueOf(1));
 
             String jwt = jwtTokenHelper.createJwtForClaims(username, claims);
             return new TokenResult(jwt);

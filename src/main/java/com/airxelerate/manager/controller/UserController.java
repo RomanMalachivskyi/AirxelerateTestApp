@@ -1,9 +1,10 @@
 package com.airxelerate.manager.controller;
 
-import com.airxelerate.manager.entity.Flight;
 import com.airxelerate.manager.entity.UserAttribute;
+import com.airxelerate.manager.exception.UserAttributeDuplicateException;
 import com.airxelerate.manager.service.UserAttributeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -20,6 +21,7 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
+    @Qualifier("userDetailsServiceImpl")
     private UserDetailsService userDetailsService;
 
     @Autowired
@@ -39,7 +41,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public UserAttribute addNewUserAttribute(@RequestBody @Valid final UserAttribute userAttribute) {
+    public UserAttribute addNewUserAttribute(@RequestBody @Valid final UserAttribute userAttribute) throws UserAttributeDuplicateException {
         return userAttributeService.add(userAttribute);
     }
 
@@ -49,5 +51,13 @@ public class UserController {
     @PreAuthorize("hasAnyAuthority('ADMIN')")
     public Iterable<UserAttribute> getAll() {
         return userAttributeService.getAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/userAttribute", params = {"username"})
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    public UserAttribute getUserAttributeByUsername(@RequestParam String username) {
+        return userAttributeService.getByUsername(username);
     }
 }

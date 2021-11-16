@@ -28,12 +28,12 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public Flight deleteById(Integer id) {
         log.info("delete flight with id: " + id);
-        Optional<Flight> categoryToDelete = flightRepo.findById(id);
-        if (categoryToDelete.isPresent()){
+        Optional<Flight> flightToDelete = flightRepo.findById(id);
+        if (flightToDelete.isPresent()) {
             flightRepo.deleteById(id);
-            return categoryToDelete.get();
+            return flightToDelete.get();
         } else {
-            throw new FlightException();
+            throw new FlightNotFoundException(id);
         }
     }
 
@@ -45,7 +45,7 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Flight update(Flight flight) {
-       throw new UnsupportedOperationException("not implemented");
+        throw new UnsupportedOperationException("not implemented");
     }
 
     @Override

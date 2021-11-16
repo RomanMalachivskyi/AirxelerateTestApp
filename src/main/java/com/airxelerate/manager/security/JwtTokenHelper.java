@@ -1,19 +1,18 @@
 package com.airxelerate.manager.security;
 
-import java.security.interfaces.RSAPrivateKey;
-import java.security.interfaces.RSAPublicKey;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Map;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.algorithms.Algorithm;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
+import java.util.Map;
 
 @Slf4j
 @Component
@@ -24,7 +23,7 @@ public class JwtTokenHelper {
 
     public String createJwtForClaims(String subject, Map<String, String> claims) {
 
-        Date expirationDate = Date.from(Instant.now().plus(1,  ChronoUnit.DAYS));
+        Date expirationDate = Date.from(Instant.now().plus(1, ChronoUnit.DAYS));
         log.info("created token expirationDate: " + expirationDate);
 
         JWTCreator.Builder jwtBuilder = JWT.create().withSubject(subject);

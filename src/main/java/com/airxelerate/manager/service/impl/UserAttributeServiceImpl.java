@@ -1,8 +1,7 @@
 package com.airxelerate.manager.service.impl;
 
-import com.airxelerate.manager.entity.Flight;
 import com.airxelerate.manager.entity.UserAttribute;
-import com.airxelerate.manager.exception.FlightNotFoundException;
+import com.airxelerate.manager.exception.UserAttributeDuplicateException;
 import com.airxelerate.manager.exception.UserAttributeNotFoundException;
 import com.airxelerate.manager.repository.UserAttributeRepo;
 import com.airxelerate.manager.service.UserAttributeService;
@@ -20,8 +19,11 @@ public class UserAttributeServiceImpl implements UserAttributeService {
     private UserAttributeRepo userAttributeRepo;
 
     @Override
-    public UserAttribute add(UserAttribute userAttribute) {
+    public UserAttribute add(UserAttribute userAttribute) throws UserAttributeDuplicateException {
         log.info("add new user: " + userAttribute);
+        if (userAttributeRepo.existsByUsername(userAttribute.getUsername())) {
+            throw new UserAttributeDuplicateException("user with such username already exists");
+        }
         return userAttributeRepo.save(userAttribute);
     }
 

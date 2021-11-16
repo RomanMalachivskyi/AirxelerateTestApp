@@ -23,12 +23,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserAttribute userAttribute = userAttributeService.getByUsername(username);
-        UserDetails user1 = User
+        UserDetails user = User
                 .withUsername(userAttribute.getUsername())
                 .authorities(userAttribute.getRole())
                 .passwordEncoder(passwordEncoder::encode)
                 .password(userAttribute.getPassword())
                 .build();
-        return user1;
+        return user;
     }
 }
