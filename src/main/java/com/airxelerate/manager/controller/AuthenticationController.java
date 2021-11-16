@@ -37,12 +37,7 @@ public class AuthenticationController {
     @ResponseBody
     public TokenResult login(@RequestParam String username, @RequestParam String password) {
 
-        UserDetails userDetails;
-        try {
-            userDetails = userDetailsService.loadUserByUsername(username);
-        } catch (UsernameNotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found");
-        }
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
         if (passwordEncoder.matches(password, userDetails.getPassword())) {
             Map<String, String> claims = new HashMap<>();
