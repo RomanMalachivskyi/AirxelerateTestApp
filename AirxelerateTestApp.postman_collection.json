@@ -1,0 +1,471 @@
+{
+	"info": {
+		"name": "AirxelerateTestApp",
+		"_postman_id": "208084d6-b3d5-7e91-4f6d-15a9e39a494a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "airxelerate",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "not.safe",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://Airxeleratetestapp-env-1.eba-7zepmgtm.eu-central-1.elasticbeanstalk.com/authenticate",
+					"protocol": "http",
+					"host": [
+						"Airxeleratetestapp-env-1",
+						"eba-7zepmgtm",
+						"eu-central-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"authenticate"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get user details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhaXJ4ZWxlcmF0ZSIsIm5iZiI6MTYzNzA5NTYyOCwicm9sZXMiOiJBRE1JTiIsImV4cCI6MTYzNzE4MjAyOCwidXNlcm5hbWUiOiJhaXJ4ZWxlcmF0ZSJ9.hkbdso5diGogHNCdxXveuPpgxoPHxuF1-BPvitM0ufBxpVLOKlIj8LLAxHFEhuhtzMqHG_8GrBmZnrp0bX4yqwnw6r-HjKLBkrjIkEMOn7GYOBPeLh6IwyVoxV5izBhn9Pkp4-B4uZvVcag2kkvH07wTtGzZGLC-nXlwNmlU_4crFWFAFUn7JoMdrzDuOxbfOA8EMIsl6OL48pfDdmDjpgf5EitmFaCYgKvCfw1I2yK-2MAz4q-LxwvUddkx6rnF1GorXfJdzoH-13TTvSDD3vW8Piag8BHONhpzUp07vh2qw-Jj0oUufRZURNrUSw36n3FYat1qYLitNvxde9vL7w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://Airxeleratetestapp-env-1.eba-7zepmgtm.eu-central-1.elasticbeanstalk.com/user",
+					"protocol": "http",
+					"host": [
+						"Airxeleratetestapp-env-1",
+						"eba-7zepmgtm",
+						"eu-central-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"user"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all user attributes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhaXJ4ZWxlcmF0ZSIsIm5iZiI6MTYzNzA4NjU5MCwicm9sZXMiOiJBRE1JTiIsImV4cCI6MTYzNzE3Mjk5MCwidXNlcm5hbWUiOiJhaXJ4ZWxlcmF0ZSJ9.PaGYLvNjaHe27CCx5CST6-CF8JEfCdpLgOim3X2A3PUxF4CF3NnnFXf8fBLD_fadfV3eCMO5TZ9Q7kht2HRVKntEcMysi5kKYq3Zprs1dsNNpyE2_tB7byjDiwNElGsScbXUuFhTz8tSKSF5JrK23qn-oNvN3-eiwRmKucTY3tMOw65why6_FFn0Pf3MHHAbfDAUr5Vxk5chNSdwsP4xWDSi_KIlKzbcOkXuHH7E7cqAFjmss5jIbzdIgAbDpu2z5SBo13BYLhdZPoqz0fYTd4-W5Gc7_6HOJT_zhQk5N4JSJ5g9-5hl_cCp9tngbmlqu_AX5NvSpkrcwLmHmRPkYQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://Airxeleratetestapp-env-1.eba-7zepmgtm.eu-central-1.elasticbeanstalk.com/userAttribute",
+					"protocol": "http",
+					"host": [
+						"Airxeleratetestapp-env-1",
+						"eba-7zepmgtm",
+						"eu-central-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"userAttribute"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add new user with role ADMIN",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhaXJ4ZWxlcmF0ZSIsIm5iZiI6MTYzNzA4NjU5MCwicm9sZXMiOiJBRE1JTiIsImV4cCI6MTYzNzE3Mjk5MCwidXNlcm5hbWUiOiJhaXJ4ZWxlcmF0ZSJ9.PaGYLvNjaHe27CCx5CST6-CF8JEfCdpLgOim3X2A3PUxF4CF3NnnFXf8fBLD_fadfV3eCMO5TZ9Q7kht2HRVKntEcMysi5kKYq3Zprs1dsNNpyE2_tB7byjDiwNElGsScbXUuFhTz8tSKSF5JrK23qn-oNvN3-eiwRmKucTY3tMOw65why6_FFn0Pf3MHHAbfDAUr5Vxk5chNSdwsP4xWDSi_KIlKzbcOkXuHH7E7cqAFjmss5jIbzdIgAbDpu2z5SBo13BYLhdZPoqz0fYTd4-W5Gc7_6HOJT_zhQk5N4JSJ5g9-5hl_cCp9tngbmlqu_AX5NvSpkrcwLmHmRPkYQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\n        \"username\": \"testUserExample\",\n        \"password\": \"testPassExample\",\n        \"role\": \"ADMIN\"\n    },"
+				},
+				"url": {
+					"raw": "http://Airxeleratetestapp-env-1.eba-7zepmgtm.eu-central-1.elasticbeanstalk.com/authenticate",
+					"protocol": "http",
+					"host": [
+						"Airxeleratetestapp-env-1",
+						"eba-7zepmgtm",
+						"eu-central-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"authenticate"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add new user with role READ_ONLY",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhaXJ4ZWxlcmF0ZSIsIm5iZiI6MTYzNzA4NjU5MCwicm9sZXMiOiJBRE1JTiIsImV4cCI6MTYzNzE3Mjk5MCwidXNlcm5hbWUiOiJhaXJ4ZWxlcmF0ZSJ9.PaGYLvNjaHe27CCx5CST6-CF8JEfCdpLgOim3X2A3PUxF4CF3NnnFXf8fBLD_fadfV3eCMO5TZ9Q7kht2HRVKntEcMysi5kKYq3Zprs1dsNNpyE2_tB7byjDiwNElGsScbXUuFhTz8tSKSF5JrK23qn-oNvN3-eiwRmKucTY3tMOw65why6_FFn0Pf3MHHAbfDAUr5Vxk5chNSdwsP4xWDSi_KIlKzbcOkXuHH7E7cqAFjmss5jIbzdIgAbDpu2z5SBo13BYLhdZPoqz0fYTd4-W5Gc7_6HOJT_zhQk5N4JSJ5g9-5hl_cCp9tngbmlqu_AX5NvSpkrcwLmHmRPkYQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\n        \"username\": \"testUserExampleReadOnly\",\n        \"password\": \"testUserExampleReadOnly\",\n        \"role\": \"READ_ONLY\"\n    },"
+				},
+				"url": {
+					"raw": "http://Airxeleratetestapp-env-1.eba-7zepmgtm.eu-central-1.elasticbeanstalk.com/userAttribute",
+					"protocol": "http",
+					"host": [
+						"Airxeleratetestapp-env-1",
+						"eba-7zepmgtm",
+						"eu-central-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"userAttribute"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get user with username",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhaXJ4ZWxlcmF0ZSIsIm5iZiI6MTYzNzA4NjU5MCwicm9sZXMiOiJBRE1JTiIsImV4cCI6MTYzNzE3Mjk5MCwidXNlcm5hbWUiOiJhaXJ4ZWxlcmF0ZSJ9.PaGYLvNjaHe27CCx5CST6-CF8JEfCdpLgOim3X2A3PUxF4CF3NnnFXf8fBLD_fadfV3eCMO5TZ9Q7kht2HRVKntEcMysi5kKYq3Zprs1dsNNpyE2_tB7byjDiwNElGsScbXUuFhTz8tSKSF5JrK23qn-oNvN3-eiwRmKucTY3tMOw65why6_FFn0Pf3MHHAbfDAUr5Vxk5chNSdwsP4xWDSi_KIlKzbcOkXuHH7E7cqAFjmss5jIbzdIgAbDpu2z5SBo13BYLhdZPoqz0fYTd4-W5Gc7_6HOJT_zhQk5N4JSJ5g9-5hl_cCp9tngbmlqu_AX5NvSpkrcwLmHmRPkYQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\n        \"username\": \"testUserExample\",\n        \"password\": \"testPassExample\",\n        \"role\": \"ADMIN\"\n    },"
+				},
+				"url": {
+					"raw": "http://Airxeleratetestapp-env-1.eba-7zepmgtm.eu-central-1.elasticbeanstalk.com/userAttribute?username=airxelerate",
+					"protocol": "http",
+					"host": [
+						"Airxeleratetestapp-env-1",
+						"eba-7zepmgtm",
+						"eu-central-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"userAttribute"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "airxelerate",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get all flights",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhaXJ4ZWxlcmF0ZSIsIm5iZiI6MTYzNzA4NjU5MCwicm9sZXMiOiJBRE1JTiIsImV4cCI6MTYzNzE3Mjk5MCwidXNlcm5hbWUiOiJhaXJ4ZWxlcmF0ZSJ9.PaGYLvNjaHe27CCx5CST6-CF8JEfCdpLgOim3X2A3PUxF4CF3NnnFXf8fBLD_fadfV3eCMO5TZ9Q7kht2HRVKntEcMysi5kKYq3Zprs1dsNNpyE2_tB7byjDiwNElGsScbXUuFhTz8tSKSF5JrK23qn-oNvN3-eiwRmKucTY3tMOw65why6_FFn0Pf3MHHAbfDAUr5Vxk5chNSdwsP4xWDSi_KIlKzbcOkXuHH7E7cqAFjmss5jIbzdIgAbDpu2z5SBo13BYLhdZPoqz0fYTd4-W5Gc7_6HOJT_zhQk5N4JSJ5g9-5hl_cCp9tngbmlqu_AX5NvSpkrcwLmHmRPkYQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\n        \"username\": \"testUserExample\",\n        \"password\": \"testPassExample\",\n        \"role\": \"ADMIN\"\n    },"
+				},
+				"url": {
+					"raw": "http://localhost:8080/flight",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flight"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add new flight",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhaXJ4ZWxlcmF0ZSIsIm5iZiI6MTYzNzA4NjU5MCwicm9sZXMiOiJBRE1JTiIsImV4cCI6MTYzNzE3Mjk5MCwidXNlcm5hbWUiOiJhaXJ4ZWxlcmF0ZSJ9.PaGYLvNjaHe27CCx5CST6-CF8JEfCdpLgOim3X2A3PUxF4CF3NnnFXf8fBLD_fadfV3eCMO5TZ9Q7kht2HRVKntEcMysi5kKYq3Zprs1dsNNpyE2_tB7byjDiwNElGsScbXUuFhTz8tSKSF5JrK23qn-oNvN3-eiwRmKucTY3tMOw65why6_FFn0Pf3MHHAbfDAUr5Vxk5chNSdwsP4xWDSi_KIlKzbcOkXuHH7E7cqAFjmss5jIbzdIgAbDpu2z5SBo13BYLhdZPoqz0fYTd4-W5Gc7_6HOJT_zhQk5N4JSJ5g9-5hl_cCp9tngbmlqu_AX5NvSpkrcwLmHmRPkYQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\n        \"iataCarrierCode\": \"W6\",\n        \"originAirportCode\": \"LWO\",\n        \"destinationAirportCode\": \"BER\",\n        \"departureDate\": \"2021-11-01T04:30:00.000+00:00\",\n        \"number\": \"0023\"\n    }"
+				},
+				"url": {
+					"raw": "http://Airxeleratetestapp-env-1.eba-7zepmgtm.eu-central-1.elasticbeanstalk.com/flight",
+					"protocol": "http",
+					"host": [
+						"Airxeleratetestapp-env-1",
+						"eba-7zepmgtm",
+						"eu-central-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"flight"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get flight by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhaXJ4ZWxlcmF0ZSIsIm5iZiI6MTYzNzA4NjU5MCwicm9sZXMiOiJBRE1JTiIsImV4cCI6MTYzNzE3Mjk5MCwidXNlcm5hbWUiOiJhaXJ4ZWxlcmF0ZSJ9.PaGYLvNjaHe27CCx5CST6-CF8JEfCdpLgOim3X2A3PUxF4CF3NnnFXf8fBLD_fadfV3eCMO5TZ9Q7kht2HRVKntEcMysi5kKYq3Zprs1dsNNpyE2_tB7byjDiwNElGsScbXUuFhTz8tSKSF5JrK23qn-oNvN3-eiwRmKucTY3tMOw65why6_FFn0Pf3MHHAbfDAUr5Vxk5chNSdwsP4xWDSi_KIlKzbcOkXuHH7E7cqAFjmss5jIbzdIgAbDpu2z5SBo13BYLhdZPoqz0fYTd4-W5Gc7_6HOJT_zhQk5N4JSJ5g9-5hl_cCp9tngbmlqu_AX5NvSpkrcwLmHmRPkYQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\n        \"iataCarrierCode\": \"W6\",\n        \"originAirportCode\": \"LWO\",\n        \"destinationAirportCode\": \"BER\",\n        \"departureDate\": \"2021-11-03T04:30:00.000+00:00\",\n        \"number\": \"0023\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/flight/14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flight",
+						"14"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete flight by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhaXJ4ZWxlcmF0ZSIsIm5iZiI6MTYzNzA4NjU5MCwicm9sZXMiOiJBRE1JTiIsImV4cCI6MTYzNzE3Mjk5MCwidXNlcm5hbWUiOiJhaXJ4ZWxlcmF0ZSJ9.PaGYLvNjaHe27CCx5CST6-CF8JEfCdpLgOim3X2A3PUxF4CF3NnnFXf8fBLD_fadfV3eCMO5TZ9Q7kht2HRVKntEcMysi5kKYq3Zprs1dsNNpyE2_tB7byjDiwNElGsScbXUuFhTz8tSKSF5JrK23qn-oNvN3-eiwRmKucTY3tMOw65why6_FFn0Pf3MHHAbfDAUr5Vxk5chNSdwsP4xWDSi_KIlKzbcOkXuHH7E7cqAFjmss5jIbzdIgAbDpu2z5SBo13BYLhdZPoqz0fYTd4-W5Gc7_6HOJT_zhQk5N4JSJ5g9-5hl_cCp9tngbmlqu_AX5NvSpkrcwLmHmRPkYQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\n        \"iataCarrierCode\": \"W6\",\n        \"originAirportCode\": \"LWO\",\n        \"destinationAirportCode\": \"BER\",\n        \"departureDate\": \"2021-11-03T04:30:00.000+00:00\",\n        \"number\": \"0023\"\n    }"
+				},
+				"url": {
+					"raw": "http://Airxeleratetestapp-env-1.eba-7zepmgtm.eu-central-1.elasticbeanstalk.com/flight/14",
+					"protocol": "http",
+					"host": [
+						"Airxeleratetestapp-env-1",
+						"eba-7zepmgtm",
+						"eu-central-1",
+						"elasticbeanstalk",
+						"com"
+					],
+					"path": [
+						"flight",
+						"14"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get flights by originAirportCode",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhaXJ4ZWxlcmF0ZSIsIm5iZiI6MTYzNzA4NjU5MCwicm9sZXMiOiJBRE1JTiIsImV4cCI6MTYzNzE3Mjk5MCwidXNlcm5hbWUiOiJhaXJ4ZWxlcmF0ZSJ9.PaGYLvNjaHe27CCx5CST6-CF8JEfCdpLgOim3X2A3PUxF4CF3NnnFXf8fBLD_fadfV3eCMO5TZ9Q7kht2HRVKntEcMysi5kKYq3Zprs1dsNNpyE2_tB7byjDiwNElGsScbXUuFhTz8tSKSF5JrK23qn-oNvN3-eiwRmKucTY3tMOw65why6_FFn0Pf3MHHAbfDAUr5Vxk5chNSdwsP4xWDSi_KIlKzbcOkXuHH7E7cqAFjmss5jIbzdIgAbDpu2z5SBo13BYLhdZPoqz0fYTd4-W5Gc7_6HOJT_zhQk5N4JSJ5g9-5hl_cCp9tngbmlqu_AX5NvSpkrcwLmHmRPkYQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\n        \"iataCarrierCode\": \"W6\",\n        \"originAirportCode\": \"LWO\",\n        \"destinationAirportCode\": \"BER\",\n        \"departureDate\": \"2021-11-03T04:30:00.000+00:00\",\n        \"number\": \"0023\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/flight?originAirportCode=LWO",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flight"
+					],
+					"query": [
+						{
+							"key": "originAirportCode",
+							"value": "LWO",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
